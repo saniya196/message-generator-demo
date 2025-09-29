@@ -13,6 +13,10 @@ class PromptRequest(BaseModel):
     prompt: str
     name: str = "Customer"
 
+@app.get("/")
+def root():
+    return {"message": "Message Generator is running! Use /generate-message endpoint to generate messages."}
+
 @app.post("/generate-message")
 def generate_message(request: PromptRequest):
     prompt = request.prompt.lower()
